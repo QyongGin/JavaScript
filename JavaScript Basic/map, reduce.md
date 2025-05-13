@@ -30,6 +30,11 @@ return '짝수';
 result; // ['홀수','짝수','홀수']
 ```
 map은 배열을 1대1로 짝짓되 기존 객체를 수정하지 않는 메서드이다.
+```javascript
+const solution = (numbers) => numbers.map((number) => number * 2)
+```
+numbers라는 배열의 요소를 number 요소에 대입한다. number * 2 한 값을 return하여 solution은 numbers요소에 각 2를 곱한 값이 들어간 배열이 생성된다. <br>
+.map() 메서드는 배열의 각 요소에 대해 주어진 함수를 실행하고, 그 결과로 새로운 배열을 반환했다.
 ## reduce, reduceRight
 reduce 메서드는 다음과 같이 사용한다. <br>
 배열.reduce( (누적값, 현재값, 인덱스, 요소) => { return 결과 }, 초깃값);<br>

@@ -87,7 +87,65 @@ showMessage(from, "Hello"); // *Ann*: Hello
 // 매개변수를 지역변수로 인지하여 지역 변수 from만 번경되었으므로 여전히 'Ann'
 alert( from ); // Ann
 ```
-함수의 매개변수에 
+함수의 매개변수에 전달된 값을 인수(argument)라고 부르기도 한다.
+- 매개변수 : 함수 선언 방식에서 괄호 사이에 위치한 변수 (선언 시 용어)
+- 인수 : 함수 호출 시 매개변수에 전달되는 값 (호출 시 용어)
+함수 선언 시에는 매개변수를 나열하고 호출 시에는 인수를 전달하여 호출한다. <br>
+
+### 기본값
+함수 호출 시 매개변수에 인수를 전달하지 않으면 그 값은 undefined가 된다.<br>
+undefined가 되지 않게 하려면 함수 선언 시 "="를 사용해 '기본값(default value)을 설정한다.
+```javascript
+// showMessage(from, text)는 매개변수가 2개지만 인수를 하나만 넣어서 호출할 수 있다.
+// text는 undefined가 된다. 
+showMessage("Ann"); // "Ann : undefined"
+
+function showMessage(from, text = "no text given") {
+    alert from + ": " + text );
+}
+showMessage("Ann"); // Ann: no text given
+showMessage("Ann", undefined) // 값이 undefined와 일치하여 기본값 할당 Ann: no text given
+
+function showMessage(from, text = anotherFunction()) {
+    // anotherFunction()은 text값이 없을 때 호출.
+}
+
+// 또 다른 방법
+function showMessage(text) {
+    if ( text === undefiend) { // 매개변수 생략 시
+        text = '빈 문자열';
+    }
+    alert(text);
+}
+
+function showMessage(text) {
+    text = text || '빈 문자열';
+}
+
+// nullish 병합 연산자(unllish coalescing operator)??
+// 0처럼 falsy로 평가되는 값 일반 값처럼 처리 가능
+// undefined 또는 null 이면 "unknown"
+function showCount(count){
+    alert(count ?? "unknown");
+}
+```
+### 매개변수 기본값 평가 시점
+자바스크립트에선 함수를 호출할 때 마다 매개변수 기본값을 평가한다. 해당 매개변수가 없을 때만 평가.<br>
+
+### 반환 값
+함수를 호출했을 때 함수를 호출한 곳에 특정 값을 반환하게 할 수 있다. 이 특정 값을 반환 값(return value)라고 부른다.
+```javascript
+function sum(a, b) {
+    return a + b;
+    alert("Hi!") // return 시 함수는 즉시 종료되기에 alert는 실행되지 않는다.
+}
+let result = sum(1, 2);
+alert( result ); // 3
+```
+지시자 return은 함수 내 어디서든 사용할 수 있다. 실행 흐름이 return을 만나면 함수 실행은 즉시 중단되고 
+함수를 호출한 곳에 값을 반환한다. <br>
+return 문이 없거나 return 지시자만 있는 함수는 undefined를 반환한다. 
+
 
 
 
